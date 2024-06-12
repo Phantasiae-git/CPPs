@@ -70,6 +70,8 @@ Character::~Character()
 
 void    Character::equip(AMateria* m)
 {
+	if (!m)
+		return;
     for(int i=0; i<4; i++)
         if(this->inventory[i]==NULL)
         {
