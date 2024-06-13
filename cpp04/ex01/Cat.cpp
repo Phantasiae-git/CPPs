@@ -22,7 +22,7 @@ Cat::Cat()
 Cat::Cat(const Cat &cat) : Animal(cat)
 {
     std::cout<<"Cat copy constructor called"<<std::endl;
-    this->brain=new Brain(*cat.brain);
+    *(this->brain)=*(cat.brain);
 }
 
 Cat &Cat::operator=(const Cat &cat)
