@@ -25,7 +25,7 @@ Character::Character(std::string const &name) : name(name)
     std::cout<< "Character "<<this->name<<" created"<<std::endl;
 }
 
-Character::Character(Character const &character)
+Character::Character(const Character &character)
 {
     std::cout<<"Character copy constructor called"<<std::endl;
     this->name=character.name;
@@ -83,19 +83,19 @@ void    Character::equip(AMateria* m)
 
 void    Character::unequip(int idx)
 {
-    if(idx>=0 || idx>3)
-        std::cout<<"Invalid index"<<std::endl;
+    if(idx<0 || idx>3)
+		return;
     if (this->inventory[idx])
     {
+        std::cout<<"Character "<<this->name<<" unequipped "<<this->inventory[idx]->getType()<<std::endl;
         this->inventory[idx] = NULL;
-        std::cout<<"Character "<<this->name<<" unequipped"<<std::endl;
     }
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-    if(idx>=0 || idx>3)
-        std::cout<<"Invalid index"<<std::endl;
+    if(idx<0 || idx>3)
+		return;
     if (inventory[idx]!=NULL)
         inventory[idx]->use(target);
 }

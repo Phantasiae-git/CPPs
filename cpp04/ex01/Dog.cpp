@@ -28,7 +28,7 @@ Dog::Dog(const Dog &dog) : Animal(dog)
 Dog &Dog::operator=(const Dog &dog)
 {
     Animal::operator=(dog);
-	this->brain=new Brain(*dog.brain);
+	*(this->brain)=*(dog.brain);
     return(*this);
 }
 
@@ -41,4 +41,9 @@ Dog::~Dog()
 void Dog::makeSound() const
 {
     std::cout<<"Woof"<<std::endl;
+}
+
+Brain	*Dog::getBrain() const
+{
+	return(this->brain);
 }

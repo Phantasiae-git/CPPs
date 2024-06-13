@@ -46,7 +46,10 @@ MateriaSource::~MateriaSource()
 void	MateriaSource::learnMateria(AMateria *materia)
 {
     if (materia==NULL)
+	{
 		std::cout<<"Invalid materia"<<std::endl;
+		return;
+	}
 	for (int i=0; i<4; i++)
 	{
 		if (this->materias[i]==NULL)

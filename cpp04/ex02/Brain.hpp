@@ -19,12 +19,15 @@
 class Brain
 {
 private:
-    std::string ideas[100]; 
+    std::string ideas[100];
 public:
     Brain();
     Brain(const Brain &brain);
     Brain &operator=(const Brain &brain);
     ~Brain();
+
+	void setIdea(std::string idea, int index);
+	void printIdeas();
 };
 
 #endif

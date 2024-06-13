@@ -34,3 +34,19 @@ Brain& Brain::operator=(const Brain &brain)
 		this->ideas[i] = brain.ideas[i];
 	return *this;
 }
+
+void Brain::setIdea(std::string idea, int index)
+{
+	if(index>99||index<0)
+		return;
+	ideas[index]=idea;
+}
+
+void Brain::printIdeas()
+{
+	for(int i=0; i<100; i++)
+	{
+		if(!ideas[i].empty())
+			std::cout<<"idea"<<i<<": "<<ideas[i]<<std::endl;
+	}
+}

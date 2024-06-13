@@ -24,7 +24,7 @@ private:
 public:
     Character();
     Character(std::string const &name);
-    Character(Character const &character);
+    Character(const Character &character);
     Character&  operator=(const Character &character);
     ~Character();
 

@@ -45,5 +45,5 @@ std::string const	&AMateria::getType(void) const
 
 void    AMateria::use(ICharacter& target)
 {
-    std::cout<<"AMateria "<< this->type <<" used on "<<target.getName()<<std::endl;
+    std::cout<<"AMateria "<<this->type<<" used on "<<target.getName()<<std::endl;
 }

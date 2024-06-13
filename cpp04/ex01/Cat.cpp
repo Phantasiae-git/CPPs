@@ -28,7 +28,7 @@ Cat::Cat(const Cat &cat) : Animal(cat)
 Cat &Cat::operator=(const Cat &cat)
 {
     Animal::operator=(cat);
-	this->brain=new Brain(*cat.brain);
+	*(this->brain)=*(cat.brain);
     return(*this);
 }
 
@@ -41,4 +41,9 @@ Cat::~Cat()
 void Cat::makeSound() const
 {
     std::cout<<"Meow"<<std::endl;
+}
+
+Brain	*Cat::getBrain() const
+{
+	return(this->brain);
 }
