@@ -6,7 +6,7 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:37:19 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/30 21:37:24 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/30 21:38:46 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int main()
 
     std::cout << std::endl<< "RobotomyRequestForm" << std::endl<< std::endl;
     try {
-        Bureaucrat ze("ze", 50); // Can sign but not execute
+        Bureaucrat ze("ze", 50);
         RobotomyRequestForm robotomyForm("Bender");
 
         ze.signForm(robotomyForm);
