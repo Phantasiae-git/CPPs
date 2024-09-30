@@ -6,7 +6,7 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:37:19 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/29 17:34:35 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/30 19:20:56 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main() {
 		Form zeForm2;
 		std::cout<<zeForm2<<std::endl;
 		
-        ze.SignForm(zeForm2);
+        ze.signForm(zeForm2);
 
         ze.decrementGrade();
         std::cout<<ze<<std::endl;
@@ -32,7 +32,7 @@ int main() {
         ze.decrementGrade();
         std::cout<<ze<<std::endl;
 
-        ze.SignForm(zeForm);
+        ze.signForm(zeForm);
         std::cout<<zeForm<<std::endl;
 
 		zeForm=zeForm2;

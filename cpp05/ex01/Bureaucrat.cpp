@@ -6,7 +6,7 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 13:57:14 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/29 16:39:19 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/30 21:36:38 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ Bureaucrat::~Bureaucrat()
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Bureaucrat grade too low");
+	return ("Bureaucrat grade too high");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Bureaucrat grade too high");
+	return ("Bureaucrat grade too low");
 }
 
 std::string Bureaucrat::getName() const
@@ -88,7 +88,7 @@ std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat)
 	return(os);
 }
 
-void	Bureaucrat::SignForm(Form &form)
+void	Bureaucrat::signForm(Form &form)
 {
 	try
 	{

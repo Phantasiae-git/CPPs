@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 18:47:15 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/30 21:05:10 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/30 11:33:49 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-#define SHRUBBERYCREATIONFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
 
 #include <string>
 #include <iostream>
@@ -20,26 +20,20 @@
 
 class Bureaucrat;
 
-class ShrubberyCreationForm : public AForm
+class PresidentialPardonForm : public AForm
 {
 private:
 	std::string target;
 	void actually_execute() const;
-ShrubberyCreationForm();
+PresidentialPardonForm();
 
 public:
 	
-	ShrubberyCreationForm(std::string target);
-	ShrubberyCreationForm(const ShrubberyCreationForm &other);
-	~ShrubberyCreationForm();
+	PresidentialPardonForm(std::string target);
+	PresidentialPardonForm(const PresidentialPardonForm &other);
+	~PresidentialPardonForm();
 
-	ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
-
-	class CantOpenFileException:public std::exception
-    {
-    public:
-        const char* what() const throw();
-    };
+	PresidentialPardonForm &operator=(const PresidentialPardonForm &other);
 };
 
-#endif // ShrubberyCreationForm_HPP
+#endif // PresidentialPardonForm_HPP

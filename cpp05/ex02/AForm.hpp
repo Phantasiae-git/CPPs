@@ -6,7 +6,7 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 12:51:22 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/29 19:59:34 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/30 11:33:56 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ private:
 	bool	is_signed;
 	const int grade_s;
 	const int grade_e;
+
+	virtual void	actually_execute() const = 0;
 public:
 	AForm();
 	AForm(const std::string name, const int grade_s, const int grade_e);
@@ -50,9 +52,14 @@ public:
         const char* what() const throw();
     };
 
+	class NotSignedException:public std::exception
+    {
+    public:
+        const char* what() const throw();
+    };
+
 	void beSigned(Bureaucrat &bureaucrat);
 	void execute(Bureaucrat const & executor) const;
-	virtual void	actually_execute(Bureaucrat const &executor) const = 0;
 };
 
 std::ostream &operator<<(std::ostream &os, const AForm &AForm);

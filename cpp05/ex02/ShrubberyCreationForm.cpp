@@ -6,12 +6,13 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 19:19:19 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/29 19:52:43 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/30 11:33:44 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), target("default")
 {
@@ -42,4 +43,29 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 		target = other.target;
 	}
 	return *this;
+}
+
+const char *ShrubberyCreationForm::CantOpenFileException::what() const throw()
+{
+	return ("File can't be created or opened");
+}
+
+void ShrubberyCreationForm::actually_execute() const
+{
+	std::ofstream outfile((this->target+"_shrubbery").c_str());
+
+	if(!outfile)
+		throw CantOpenFileException();
+		
+	outfile << "       _-_" << std::endl;
+	outfile << "    /~~   ~~\\" << std::endl;
+	outfile << " /~~         ~~\\" << std::endl;
+	outfile << "{               }" << std::endl;
+	outfile << " \\  _-     -_  /" << std::endl;
+	outfile << "   ~  \\\\ //  ~" << std::endl;
+	outfile << "_- -   | | _- _" << std::endl;
+	outfile << "  _ -  | |   -_ "<< std::endl;
+	outfile << "      // \\\\" << std::endl;
+	
+	outfile.close();
 }

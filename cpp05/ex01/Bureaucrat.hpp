@@ -6,7 +6,7 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:35:55 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/29 16:26:17 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/30 19:20:02 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ public:
     void	incrementGrade();
 	void	decrementGrade();
 
-	void	SignForm(Form &form);
+	void	signForm(Form &form);
 
 };
 

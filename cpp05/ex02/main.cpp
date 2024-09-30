@@ -6,46 +6,80 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:37:19 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/29 17:20:04 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/30 21:37:24 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp" 
 #include "Bureaucrat.hpp"
 
-int main() {
-	try {
-		Bureaucrat ze("ze", 2);
-        std::cout<<ze<<std::endl;
-		
-        Form zeForm("ze", 3, 1);
-        std::cout<<zeForm<<std::endl;
-        
-		Form zeForm2= Form();
-		std::cout<<zeForm2<<std::endl;
-		
-        ze.SignForm(zeForm2);
+int main() 
+{ 
+	std::cout << "ShrubberyCreationForm" << std::endl<< std::endl;
+    try {
+        Bureaucrat ze("ze", 150);
+        ShrubberyCreationForm shrubForm("o teu pai");
 
-        ze.decrementGrade();
-        std::cout<<ze<<std::endl;
+        ze.signForm(shrubForm);
+        ze.executeForm(shrubForm);
+    } catch (std::exception &e) {
+        std::cout << "Exception caught: " << e.what() << std::endl;
+    }
 
-        ze.decrementGrade();
-        std::cout<<ze<<std::endl;
+    try {
+        Bureaucrat yah("yah", 145);
+		Bureaucrat fixe("fixe", 137);
+		Bureaucrat ze("ze", 150);
+        ShrubberyCreationForm shrubForm("ali nao sei");
+		//shrubForm.beSigned(ze);
+        yah.signForm(shrubForm);
 
-        ze.SignForm(zeForm);
-        std::cout<<zeForm<<std::endl;
+        yah.executeForm(shrubForm);
+		fixe.executeForm(shrubForm);
+    } catch (std::exception &e) {
+        std::cout << "Exception caught: " << e.what() << std::endl;
+    }
 
-		zeForm=zeForm2;
-		std::cout<<zeForm<<std::endl;
+    std::cout << std::endl<< "RobotomyRequestForm" << std::endl<< std::endl;
+    try {
+        Bureaucrat ze("ze", 50); // Can sign but not execute
+        RobotomyRequestForm robotomyForm("Bender");
 
-		Form zeForm3("ze3", 4, 1);
-std::cout<<zeForm3<<std::endl;
+        ze.signForm(robotomyForm);
+        std::cout << "Form signed by " << ze.getName() << std::endl;
 
-		zeForm3.beSigned(ze);
-		std::cout<<zeForm3<<std::endl;
+        Bureaucrat ze2("ze2", 45);
+		//Bureaucrat ze2("ze2", 0);
+		ze.executeForm(robotomyForm);
+        ze2.executeForm(robotomyForm);
+    } catch (std::exception &e) {
+        std::cout << "Exception caught: " << e.what() << std::endl;
+    }
 
-    } catch (std::exception &e)
-    {
-        std::cerr<<"Exception caught: "<<e.what()<<std::endl;
+    std::cout << std::endl<<"PresidentialPardonForm" << std::endl<< std::endl;
+    try {
+        Bureaucrat aaaaaaaaaaaaaaa("aaaaaaaaaaaaaaa", 30);
+        PresidentialPardonForm pardonForm("o teu pai");
+
+        aaaaaaaaaaaaaaa.signForm(pardonForm);
+
+        Bureaucrat frank("Frank", 5);
+        frank.executeForm(pardonForm);
+		frank.signForm(pardonForm);
+		frank.executeForm(pardonForm);
+    } catch (std::exception &e) {
+        std::cout << "Exception caught: " << e.what() << std::endl;
+    }
+
+    try {
+        Bureaucrat admin("admin", 1);
+        ShrubberyCreationForm shrubForm("garden");
+
+        admin.signForm(shrubForm);
+        admin.executeForm(shrubForm);
+    } catch (std::exception &e) {
+        std::cout << "Exception caught: " << e.what() << std::endl;
     }
 }

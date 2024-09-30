@@ -6,7 +6,7 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:35:55 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/29 19:38:11 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/30 19:19:50 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ public:
     void	incrementGrade();
 	void	decrementGrade();
 
-	void	SignForm(AForm &form);
-
+	void	signForm(AForm &form);
+	void	executeForm(AForm const & form);
 };
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);

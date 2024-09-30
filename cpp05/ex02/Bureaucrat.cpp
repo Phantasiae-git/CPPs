@@ -6,7 +6,7 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 13:57:14 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/29 19:38:17 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/30 21:36:18 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ Bureaucrat::~Bureaucrat()
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Bureaucrat grade too low");
+	return ("Bureaucrat grade too high");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Bureaucrat grade too high");
+	return ("Bureaucrat grade too low");
 }
 
 std::string Bureaucrat::getName() const
@@ -88,7 +88,7 @@ std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat)
 	return(os);
 }
 
-void	Bureaucrat::SignForm(AForm &form)
+void	Bureaucrat::signForm(AForm &form)
 {
 	try
 	{
@@ -98,5 +98,18 @@ void	Bureaucrat::SignForm(AForm &form)
 	catch (std::exception &e)
 	{
 		std::cout<<this->name<<" cannot sign "<<form.getName()<<" because: "<<e.what()<< std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(AForm const & form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout<<this->name<<" executed "<<form.getName()<<std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout<<this->name<<" cannot execute "<<form.getName()<<" because: "<<e.what()<< std::endl;
 	}
 }
