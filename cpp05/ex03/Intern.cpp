@@ -6,7 +6,7 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 21:51:08 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/30 22:51:29 by phanta           ###   ########.fr       */
+/*   Updated: 2024/10/08 11:09:18 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ AForm* Intern::createShrubberyCreationForm(const std::string& target) {
 AForm *Intern::makeForm(const std::string name, const std::string target)
 {
 	std::string	forms[3] = {"presidential pardon", "robotomy request", "shrubbery creation"};
-    functions functions[3] = {&createPresidentialPardonForm,&createRobotomyRequestForm,&createShrubberyCreationForm};
+    functions functions[3] = {&Intern::createPresidentialPardonForm,&Intern::createRobotomyRequestForm,&Intern::createShrubberyCreationForm};
     for(int i=0; i<3; i++)
     {
         if(name==forms[i])

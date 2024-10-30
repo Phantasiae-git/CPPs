@@ -6,7 +6,7 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 12:51:22 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/30 11:33:56 by phanta           ###   ########.fr       */
+/*   Updated: 2024/10/08 11:25:28 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ public:
 	AForm();
 	AForm(const std::string name, const int grade_s, const int grade_e);
 	AForm(const AForm &other);
-	~AForm();
+	virtual ~AForm();
 
 	AForm &operator=(const AForm &other);
 
