@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 RM = rm -rf
 NAME = serializer
 
-SRCS = main.cpp ScalarConverter.cpp utils.cpp
+SRCS = main.cpp Serializer.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
