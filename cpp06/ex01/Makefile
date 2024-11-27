@@ -1,7 +1,7 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 RM = rm -rf
-NAME = convert
+NAME = serializer
 
 SRCS = main.cpp ScalarConverter.cpp utils.cpp
 

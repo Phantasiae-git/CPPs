@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-
 #include "utils.hpp"
 
 ScalarConverter::ScalarConverter()
@@ -40,8 +39,9 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 void	ScalarConverter::convert(std::string const &input)
 {
 	int oor=0;
+	int oorf=0;
 	int nd=0;
-	int type=typeCheck(input, oor, nd);
+	int type=typeCheck(input, oor, nd, oorf);
 	switch (type)
 	{
 	case 1://char
@@ -51,13 +51,16 @@ void	ScalarConverter::convert(std::string const &input)
 		printInt(input, oor);
 		break;
 	case 3://float
-		printFloat(input, oor);
+		printFloat(input, oor, oorf);
 		break;
 	case 4://double
-		printDouble(input, oor);
+		printDouble(input, oor, oorf);
 		break;
 	case 5://trash
-		printTrash(input);
+		printTrash();
+		break;
+	case 6://pseudo
+		printPseudo(input);
 		break;
 	}
 }

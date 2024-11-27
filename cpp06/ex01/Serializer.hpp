@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phantasiae <phantasiae@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 17:33:24 by phanta            #+#    #+#             */
-/*   Updated: 2024/11/27 14:46:06 by phantasiae       ###   ########.fr       */
+/*   Created: 2024/11/27 14:45:11 by phantasiae        #+#    #+#             */
+/*   Updated: 2024/11/27 14:54:35 by phantasiae       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-#define SCALARCONVERTER_HPP
+#ifndef SERIALIZER_HPP
+#define SERIALIZER_HPP
 
 #include <string>
 #include <iostream>
-#include <limits>
+#include "data.hpp"
 
-class ScalarConverter
+class Serializer
 {
 private:
-
 public:
-	ScalarConverter();
-	ScalarConverter(const ScalarConverter &other);
-	virtual ~ScalarConverter() = 0;
+    Serializer();
+    Serializer(const Serializer &other);
+    virtual ~Serializer() = 0;
 
-	ScalarConverter &operator=(const ScalarConverter &other);
-	static void convert(std::string const &input);
+    Serializer &operator=(const Serializer &other);
+    
+    static uintptr_t serialize(Data* ptr);
+    static Data* deserialize(uintptr_t raw);
 };
 
-#endif // ScalarConverter_HPP
+#endif // SERIALIZER_HPP
