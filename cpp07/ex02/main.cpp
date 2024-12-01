@@ -6,11 +6,12 @@
 /*   By: phantasiae <phantasiae@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 20:37:02 by phantasiae        #+#    #+#             */
-/*   Updated: 2024/12/01 13:56:27 by phantasiae       ###   ########.fr       */
+/*   Updated: 2024/12/01 17:15:26 by phantasiae       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cstdlib>
 #include <Array.hpp>
 
 #define MAX_VAL 750
@@ -26,11 +27,20 @@ int main(int, char**)
         mirror[i] = value;
     }
     //SCOPE
+    std::cout << "----------------------------scope test:" << std::endl;
     {
-        Array<int> tmp = numbers;
+        Array<int> tmp;
+        tmp = numbers;
         Array<int> test(tmp);
+        // for (int i = 0; i < test.size(); i++)
+        // {
+        //     std::cout << i << std::endl;
+        //     std::cout << test[i] << std::endl;
+        //     std::cout << numbers[i] << std::endl;
+        // }
     }
-
+    std::cout << "----------------------------scope test end:" << std::endl;
+    
     for (int i = 0; i < MAX_VAL; i++)
     {
         if (mirror[i] != numbers[i])
@@ -50,6 +60,19 @@ int main(int, char**)
     try
     {
         numbers[MAX_VAL] = 0;
+        std::cout << numbers[MAX_VAL] << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    try
+    {
+        std::cout << numbers[MAX_VAL-1] << std::endl;
+        std::cout << mirror[MAX_VAL-1] << std::endl;
+        numbers[MAX_VAL-1] = 0;
+        std::cout << numbers[MAX_VAL-1] << std::endl;
+        std::cout << mirror[MAX_VAL-1] << std::endl;
     }
     catch(const std::exception& e)
     {
@@ -60,6 +83,11 @@ int main(int, char**)
     {
         numbers[i] = rand();
     }
+    Array<int> a(2);
+    Array<int> b(5);
+    Array<int> c(0);
+    a=b;
+    a=c;
     delete [] mirror;//
     return 0;
 }

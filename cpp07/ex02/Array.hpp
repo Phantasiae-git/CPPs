@@ -6,7 +6,7 @@
 /*   By: phantasiae <phantasiae@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 22:30:44 by phantasiae        #+#    #+#             */
-/*   Updated: 2024/12/01 14:18:40 by phantasiae       ###   ########.fr       */
+/*   Updated: 2024/12/01 16:58:18 by phantasiae       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,25 @@ template <typename T> class Array
 {
 private:
     T* array;
-    unsigned int size;
+    unsigned int length;
 
 public:
     Array();
-    Array(unsigned int size);
+    Array(unsigned int length);
     Array(const Array &other);
     ~Array();
     
     Array &operator=(const Array &other);
     T &operator[](int other);
-    int    size();
+    int    size() const;
 
     class OutOfBoundsException:public std::exception
+    {
+    public:
+        const char* what() const throw();
+    };
+
+    class NegativeIndexException:public std::exception
     {
     public:
         const char* what() const throw();
@@ -41,24 +47,20 @@ public:
 template <typename T> Array<T>::Array()
 {
     this->array= new T[0];
-    this->size=0;
-    // int * a = new int();
-    // std::cout << a << std::endl;
+    this->length=0;
     std::cout << "Array default constructor called" << std::endl;
 }
 
-template <typename T> Array<T>::Array(unsigned int size) : size(size)
+template <typename T> Array<T>::Array(unsigned int length) : length(length)
 {
-    this->array= new T[size];
+    this->array= new T[length];
     std::cout << "Array constructor called" << std::endl;
 }
 
-template <typename T> Array<T>::Array(const Array &other) : size(other.size)
+template <typename T> Array<T>::Array(const Array &other) : length(other.length)
 {
-    if(this->array)
-        delete [] array;
-    this->array= new T[size];
-    for(int i=0; i<size; i++)
+    this->array= new T[length];
+    for(unsigned int i=0; i<this->length; i++)
         this->array[i]=other.array[i];
     std::cout << "Array copy constructor called" << std::endl;
 }
@@ -71,13 +73,12 @@ template <typename T> Array<T>::~Array()
 
 template <typename T> Array<T> &Array<T>::operator=(const Array &other)
 {
-    if(this->size!=other.size)
-    {
-        delete [] this->array;
-        this->size=other.size;
-        this->array= new T[this->size];
-    }
-    for(int i=0; i<size; i++)
+    if(this->array)
+        delete [] array;
+    std::cout << "Array = operator overload called" << std::endl;
+    this->length=other.length;
+    this->array= new T[length];
+    for(unsigned int i=0; i<this->length; i++)
         this->array[i]=other.array[i];
     return *this;
 }
@@ -87,18 +88,28 @@ template <typename T> const char *Array<T>::OutOfBoundsException::what() const t
 	return ("index is out of bounds");
 }
 
+template <typename T> const char *Array<T>::NegativeIndexException::what() const throw()
+{
+	return ("index can't be negative");
+}
+
 template <typename T>  T &Array<T>::operator[](int element)
 {
-    if(element>=size)
+    if(element<0)
+    {
+        throw NegativeIndexException();
+    }
+    unsigned int idx=static_cast<unsigned int>(element);
+    if(idx>=this->length)
     {
         throw OutOfBoundsException();
     }
-    return(this->array[element]);
+    return(this->array[idx]);
 }
 
-template <typename T> int Array<T>::size()
+template <typename T> int Array<T>::size() const
 {
-    return this->size;
+    return this->length;
 }
 
 #endif
