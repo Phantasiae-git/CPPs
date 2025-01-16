@@ -6,7 +6,7 @@
 /*   By: phantasiae <phantasiae@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:36:57 by phantasiae        #+#    #+#             */
-/*   Updated: 2025/01/15 15:43:22 by phantasiae       ###   ########.fr       */
+/*   Updated: 2025/01/16 12:30:11 by phantasiae       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class Span
 private:
     int *span;
     unsigned int N;
+    unsigned int elements;
 
 public:
     Span();
@@ -29,7 +30,16 @@ public:
     ~Span();
 
     Span &operator=(const Span &other);
-    // Other public member functions
+    
+    void addNumber(int a);
+    unsigned int shortestSpan();
+    unsigned int longestSpan();
+
+    class SpanFull:public std::exception
+    {
+    public:
+        const char* what() const throw();
+    };
 };
 
 
