@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 RM = rm -rf
 NAME = span
 
-SRCS = main.cpp
+SRCS = main.cpp Span.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

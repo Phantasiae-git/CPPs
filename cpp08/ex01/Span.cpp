@@ -6,7 +6,7 @@
 /*   By: phantasiae <phantasiae@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:44:33 by phantasiae        #+#    #+#             */
-/*   Updated: 2025/01/16 12:33:16 by phantasiae       ###   ########.fr       */
+/*   Updated: 2025/01/26 19:38:31 by phantasiae       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@ Span::Span() : N(0), elements(0)
 Span::Span(unsigned int N) : N(N), elements(0)
 {
     std::cout << "Span constructor called" << std::endl;
-    int array[N];
-    span=array;
 }
 
-Span::Span(const Span &other) : N(other.N), elements(other.elements)
+Span::Span(const Span &other) : N(other.N), elements(other.elements)       
 {
     std::cout << "Span copy constructor called" << std::endl;
+    span = std::vector<int>(N);
+    for(unsigned int i=0;i<elements;i++)
+        span[i]=other.span[i];
 }
 
 Span::~Span()
@@ -39,7 +40,7 @@ Span &Span::operator=(const Span &other)
     if (this != &other)
     {   N = other.N;
         elements=other.elements;
-        // Assign other attributes
+        span=other.span;
     }
     return *this;
 }
@@ -49,14 +50,60 @@ void Span::addNumber(int a)
     if(elements+1>N)
         throw SpanFull();
     elements++;
-    span[elements-1]=a;
+    span.push_back(a);
 }
 
-unsigned int shortestSpan()
+unsigned int absolute(int a)
 {
-    unsigned int distance;
+    if(a<0)
+        return -(a);
+    else
+        return a;
+}
 
+unsigned int Span::shortestSpan()
+{
+    unsigned int longest=4294967295;
     
+    if(elements<2)
+    {
+        //throw exception
+    }
+    for(unsigned int i=0;i<elements;i++)
+        for(unsigned int j=0;j<elements;j++)
+            if(i!=j)
+                if(absolute(span[i]-span[j])<(longest))
+                    longest=absolute(span[i]-span[j]);
+    return absolute(longest);
+}
+
+unsigned int Span::longestSpan()
+{
+    int longest=0;
+    
+    if(elements<2)
+    {
+        //throw exception
+    }
+    
+    for(unsigned int i=0;i<elements;i++)
+        for(unsigned int j=0;j<elements;j++)
+            if((span[i]-span[j])>longest)
+                longest=span[i]-span[j];
+    
+    unsigned int final;
+
+    if(longest<0)
+        final=-(longest);
+    else
+        final=longest;
+    return final;
+}
+
+void  Span::printSpan()
+{
+    for(unsigned int i=0;i<this->elements;i++)
+        std::cout << span[i] << std::endl;
 }
 
 const char *Span::SpanFull::what() const throw()

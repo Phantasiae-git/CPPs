@@ -6,7 +6,7 @@
 /*   By: phantasiae <phantasiae@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:36:57 by phantasiae        #+#    #+#             */
-/*   Updated: 2025/01/16 12:30:11 by phantasiae       ###   ########.fr       */
+/*   Updated: 2025/01/26 18:34:58 by phantasiae       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
 
 class Span
 {
 private:
-    int *span;
+    std::vector<int> span;
     unsigned int N;
     unsigned int elements;
 
@@ -34,6 +35,7 @@ public:
     void addNumber(int a);
     unsigned int shortestSpan();
     unsigned int longestSpan();
+    void printSpan();
 
     class SpanFull:public std::exception
     {
