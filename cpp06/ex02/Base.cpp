@@ -48,7 +48,7 @@ Base * Base::generate(void)
         break;
     }
     default:
-        break;
+        return NULL;
     }
     return bs;
 }

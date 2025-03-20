@@ -30,7 +30,7 @@ Serializer::~Serializer()
 
 Serializer &Serializer::operator=(const Serializer &other)
 {
-    *this=other;
+	(void)other;
     return(*this);
 }
 

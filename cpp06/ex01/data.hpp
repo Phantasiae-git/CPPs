@@ -13,15 +13,11 @@
 #ifndef DATA_HPP
 #define DATA_HPP
 
+#include <stdint.h>
+
 typedef struct data_t
 {
     int n;
 } Data;
-
-#ifndef uintptr_t
-
-typedef unsigned long uintptr_t;
-
-#endif
 
 #endif
