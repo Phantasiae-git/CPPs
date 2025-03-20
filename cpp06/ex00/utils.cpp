@@ -26,7 +26,7 @@ void printChar(std::string const &input, int nd)
 	std::cout << static_cast<int>(input[0]) << std::endl;
 	std::cout << types[2];
 	std::cout << static_cast<float>(input[0]) << "f" << std::endl;
-	std::cout << types[0];
+	std::cout << types[3];
 	std::cout << static_cast<double>(input[0]) << std::endl;
 };
 
