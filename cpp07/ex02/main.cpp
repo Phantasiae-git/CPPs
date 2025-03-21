@@ -6,7 +6,7 @@
 /*   By: phantasiae <phantasiae@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 20:37:02 by phantasiae        #+#    #+#             */
-/*   Updated: 2024/12/01 17:15:26 by phantasiae       ###   ########.fr       */
+/*   Updated: 2025/03/21 10:03:21 by phantasiae       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <Array.hpp>
 
 #define MAX_VAL 750
-int main(int, char**)
+int main()
 {
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
