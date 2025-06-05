@@ -2,7 +2,7 @@
 
 void check_args(std::string str)
 {
-    if(str.find_first_not_of("123456789")!=std::string::npos)
+    if(str.find_first_not_of("1234567890")!=std::string::npos)
     {
         std::cerr << "Error" << std::endl;
         exit(1);
@@ -36,7 +36,11 @@ int main(int argc, char **argv)
         for(int i=1; i<argc; i++)
             args.push_back(argv[i]);
     }
+
     for(unsigned int i=0; i<args.size(); i++)
         check_args(args[i]);
-    
+    std::vector<int> numbers(args.size());
+    for (size_t i = 0; i < args.size(); ++i)
+        numbers[i] = std::atoi(args[i].c_str());
+    FJ(numbers, 2);
 }
