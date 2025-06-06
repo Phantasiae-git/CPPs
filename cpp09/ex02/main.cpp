@@ -1,6 +1,6 @@
 #include "PMergeMe.hpp"
 
-void check_args(std::string str)
+void check_args(std::string str, std::vector<int> &numbers, int i)
 {
     if(str.find_first_not_of("1234567890")!=std::string::npos)
     {
@@ -14,6 +14,7 @@ void check_args(std::string str)
         exit(1);
     }
     //std::cout << n << std::endl;
+    numbers[i]=n;
 }
 
 int main(int argc, char **argv)
@@ -37,10 +38,9 @@ int main(int argc, char **argv)
             args.push_back(argv[i]);
     }
 
-    for(unsigned int i=0; i<args.size(); i++)
-        check_args(args[i]);
     std::vector<int> numbers(args.size());
-    for (size_t i = 0; i < args.size(); ++i)
-        numbers[i] = std::atoi(args[i].c_str());
+    for(unsigned int i=0; i<args.size(); i++)
+        check_args(args[i], numbers, i);
+    
     FJ(numbers, 2);
 }
