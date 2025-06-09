@@ -43,4 +43,7 @@ int main(int argc, char **argv)
         check_args(args[i], numbers, i);
     
     FJ(numbers, 2);
+
+    for(std::vector<int>::iterator it=numbers.begin(); it!= numbers.end(); it++)
+        std::cout << *it << " ";
 }
