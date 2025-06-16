@@ -16,7 +16,7 @@ std::vector<int> jacobstahl(int ps, int size)//organic jacobstahl (+regression),
     order.push_back(1);
     if(elements==1)
         return order;
-    if (elements >2)
+    if (elements >=2)
         order.push_back(3);
     int prev= 3;
     int prev1= 1;
@@ -32,7 +32,7 @@ std::vector<int> jacobstahl(int ps, int size)//organic jacobstahl (+regression),
         prev=next;
     }
             //std::cout << "prev= " << prev << " elements: " << elements << std::endl;
-    if(prev>(int)elements+1)
+    if(prev>(int)elements)
     {
         //std::cout << "prev= " << prev << " elements: " << elements << std::endl;
         std::vector<int>::iterator ceil_it = order.begin();
@@ -60,10 +60,12 @@ std::vector<int> jacobstahl(int ps, int size)//organic jacobstahl (+regression),
 template <typename T, typename itr> void insert_m(itr s, itr e, int idx, T &main)//insert range ("pair") in main at index
 {
     itr paste_s = main.begin()+idx;
+	int it = 0;
     while (s!=e)
     {
         main.insert(paste_s, *s);
-        paste_s++;
+		it++;
+		paste_s =  main.begin()+idx + it;
         s++;
     }
 }
@@ -76,7 +78,7 @@ template <typename T>  void do_insertion(T &cont, int pair_size, int pairs)
         b_nbr++;
     //std::cout << "pairs: "<< pairs << " b nbr: " << b_nbr << std::endl;
     T pend(b_nbr*(pair_size));
-    T main(cont.size()-pend.capacity());
+    T main(cont.size()-b_nbr*(pair_size));
 
     //     std::cout << "recursion level "<< pair_size << std::endl;
     // itr a=cont.begin();

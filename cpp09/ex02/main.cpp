@@ -39,11 +39,43 @@ int main(int argc, char **argv)
     }
 
     std::vector<int> numbers(args.size());
-    for(unsigned int i=0; i<args.size(); i++)
-        check_args(args[i], numbers, i);
-    
+	for(unsigned int i=0; i<args.size(); i++)
+		check_args(args[i], numbers, i);
+
+	
+	std::cout << "Before: " << std::endl;
+	for(std::vector<int>::iterator it=numbers.begin(); it!= numbers.end(); it++)
+		std::cout << *it << " ";
+    std::cout << std::endl;
+
+
+	std::deque<int> deque;
+	for(unsigned int i = 0; i<numbers.size(); i++)
+		deque.push_back(numbers[i]);
+
+	//gettime
+
     FJ(numbers, 2);
 
+	//diff
+
+	std::cout << "After: " << std::endl;
     for(std::vector<int>::iterator it=numbers.begin(); it!= numbers.end(); it++)
-        std::cout << *it << " ";
+		std::cout << *it << " ";
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+
+	 FJ(deque, 2);
+	// //diff da diff
+
+	std::cout << "After: " << std::endl;
+    for(std::deque<int>::iterator it=deque.begin(); it!= deque.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+
+	// std::cout << "Time to process a range of " << numbers.size() << " elements with std::vector: " << vectime << " us" << std::endl;
+	// std::cout << "Time to process a range of " << numbers.size() << " elements with std::deque: " << deqtime << " us" << std::endl;
 }
